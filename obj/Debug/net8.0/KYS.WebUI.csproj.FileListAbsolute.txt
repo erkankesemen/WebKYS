@@ -1,0 +1,8 @@
+C:\Users\user\source\repos\KYSWeb\obj\Debug\net8.0\KYS.WebUI.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\KYSWeb\obj\Debug\net8.0\KYS.WebUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\KYSWeb\obj\Debug\net8.0\KYS.WebUI.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\KYSWeb\obj\Debug\net8.0\KYS.WebUI.AssemblyInfo.cs
+C:\Users\user\source\repos\KYSWeb\obj\Debug\net8.0\KYS.WebUI.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\KYSWeb\obj\Debug\net8.0\KYS.WebUI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\user\source\repos\KYSWeb\obj\Debug\net8.0\KYS.WebUI.RazorAssemblyInfo.cache
+C:\Users\user\source\repos\KYSWeb\obj\Debug\net8.0\KYS.WebUI.RazorAssemblyInfo.cs

@@ -1,0 +1,144 @@
+@model IEnumerable<KYS.Entity.AracBilgi>
+
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1>Üretim Listesi</h1>
+        <div class="d-flex align-items-center">
+            <input type="text" id="globalSearch" class="form-control me-2" placeholder="Tüm Tabloyu Ara..."
+                style="width: 300px;">
+            <button class="btn btn-secondary me-2" onclick="filterTable()">Ara</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDataModal">
+                <i class="bi bi-plus-circle me-2"></i>Yeni Veri Ekle
+            </button>
+        </div>
+    </div>
+
+    <div class="card mb-4" style="max-height: 75vh; overflow-y: auto;">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover" id="dataTable">
+                    <thead>
+                        <tr style="font-size: 0.9rem;">
+                            <th>
+                               S.No
+                                <i class="bi bi-filter" onclick="toggleFilter(0)" style="cursor: pointer;"></i>
+                                <input type="text" class="form-control form-control-sm mt-2 d-none"
+                                    placeholder="Filtrele..." onkeyup="filterColumn(event, 0)">
+                            </th>
+                            <th>
+                                İş Emri No
+                                <i class="bi bi-filter" onclick="toggleFilter(1)" style="cursor: pointer;"></i>
+                                <input type="text" class="form-control form-control-sm mt-2 d-none"
+                                    placeholder="Filtrele..." onkeyup="filterColumn(event, 1)">
+                            </th>
+                            <th>
+                                Şase Numarası
+                                <i class="bi bi-filter" onclick="toggleFilter(2)" style="cursor: pointer;"></i>
+                                <input type="text" class="form-control form-control-sm mt-2 d-none"
+                                    placeholder="Filtrele..." onkeyup="filterColumn(event, 2)">
+                            </th>
+                            <th>
+                                Atölye Giriş Tarihi
+                                <i class="bi bi-filter cursor-pointer" onclick="toggleFilter(3)"></i>
+                                <input type="text" class="form-control form-control-sm mt-2 d-none"
+                                    placeholder="Filtrele..." onkeyup="filterColumn(3)">
+                            </th>
+                            <th>
+                                Araç Markası
+                                <i class="bi bi-filter cursor-pointer" onclick="toggleFilter(4)"></i>
+                                <input type="text" class="form-control form-control-sm mt-2 d-none"
+                                    placeholder="Filtrele..." onkeyup="filterColumn(4)">
+                            </th>
+                            <th>
+                                Versiyon
+                                <i class="bi bi-filter cursor-pointer" onclick="toggleFilter(5)"></i>
+                                <input type="text" class="form-control form-control-sm mt-2 d-none"
+                                    placeholder="Filtrele..." onkeyup="filterColumn(5)">
+                            </th>
+                            <th>
+                                Varyant
+                                <i class="bi bi-filter cursor-pointer" onclick="toggleFilter(6)"></i>
+                                <input type="text" class="form-control form-control-sm mt-2 d-none"
+                                    placeholder="Filtrele..." onkeyup="filterColumn(6)">
+                            </th>
+                            <th>
+                                Modeli
+                                <i class="bi bi-filter cursor-pointer" onclick="toggleFilter(7)"></i>
+                                <input type="text" class="form-control form-control-sm mt-2 d-none"
+                                    placeholder="Filtrele..." onkeyup="filterColumn(7)">
+                            </th>
+                            <th>
+                                Durumu
+                                <i class="bi bi-filter cursor-pointer" onclick="toggleFilter(8)"></i>
+                                <input type="text" class="form-control form-control-sm mt-2 d-none"
+                                    placeholder="Filtrele..." onkeyup="filterColumn(8)">
+                            </th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            var counter = 1;
+                            @foreach (var item in Model)
+                            {
+                                <tr style="font-size: 0.9rem;" data-id="@item.Id">
+                                    <td>@counter</td>
+                                    <td>@item.IsEmriNo</td>
+                                    <td>@item.SaseNumarasi</td>
+                                    <td>@item.AtolyeGirisTarihi?.ToString("dd.MM.yyyy")</td>
+                                    <td>@item.AracMarkasi</td>
+                                    <td>@item.Versiyon</td>
+                                    <td>@item.Varyant</td>
+                                    <td>@item.ModelYili</td>
+                                    <td>@(item.SiparisDurumu == true ? "Tamamlandı" : "Bekliyor")</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary px-1 py-0"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-danger px-1 py-0"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                  counter++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="10">Veri bulunamadı.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+ <div class="modal fade" id="addDataModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Position</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>

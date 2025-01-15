@@ -1,0 +1,65 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = KYS.WebUI
+build_property.RootNamespace = KYS.WebUI
+build_property.ProjectDir = C:\Users\user\source\repos\KYSWeb\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\user\source\repos\KYSWeb
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/user/source/repos/KYSWeb/KYS.WebUI/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S1lTLldlYlVJXFBhZ2VzXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/KYSWeb/KYS.WebUI/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S1lTLldlYlVJXFBhZ2VzXFByaXZhY3kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/KYSWeb/KYS.WebUI/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S1lTLldlYlVJXFBhZ2VzXFNoYXJlZFxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/KYSWeb/KYS.WebUI/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S1lTLldlYlVJXFBhZ2VzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/KYSWeb/KYS.WebUI/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S1lTLldlYlVJXFBhZ2VzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/KYSWeb/KYS.WebUI/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S1lTLldlYlVJXFZpZXdzXEhvbWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/KYSWeb/KYS.WebUI/Views/Shared/_index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S1lTLldlYlVJXFZpZXdzXFNoYXJlZFxfaW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/KYSWeb/KYS.WebUI/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S1lTLldlYlVJXFZpZXdzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/KYSWeb/KYS.WebUI/Views/Shared/_navbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S1lTLldlYlVJXFZpZXdzXFNoYXJlZFxfbmF2YmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/KYSWeb/KYS.WebUI/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S1lTLldlYlVJXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/source/repos/KYSWeb/KYS.WebUI/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = S1lTLldlYlVJXFBhZ2VzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-s8kefcgblf
