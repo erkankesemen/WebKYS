@@ -3,60 +3,83 @@ using KYS.Business.Concrete;
 using KYS.Data.Abstract;
 using KYS.Data.Concrete;
 using KYS.Data.Concrete.EfCore;
+using KYS.WebUI.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// DbContext kaydý
 builder.Services.AddDbContext<NetContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("NetContext"));
 });
 
-// Servis katmaný ve UnitOfWork kaydý
+builder.Services.AddDbContext<ApplicationContext>(options=>options.UseSqlServer("ApplicationContext"));
+builder.Services.AddIdentity<User,IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
+builder.Services.Configure<IdentityOptions>(options=> {
+    options.Password.RequireDigit = true; // mutlaka sayÄ±sal deÄŸer girecek
+   /*  options.Password.RequireLowercase = true; //mutlaka kÃ¼Ã§Ã¼k harf olmalÄ±
+    options.Password.RequireUppercase = true; // bÃ¼yÃ¼k harf olmalÄ±
+    options.Password.RequiredLength = 6; // minimum karakter sayÄ±sÄ± */
+
+    options.Lockout.MaxFailedAccessAttempts = 5; // maksimum 5 hata yapabilir ve block edilir hesap
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);// 5 dk bloklar
+    options.User.RequireUniqueEmail = true; //aynÄ± mail ile sadece 1 tane kullanÄ±cÄ± olmalÄ±
+
+    
+});
+builder.Services.ConfigureApplicationCookie(options => {
+    options.LoginPath = "/Login/Login";
+    options.LogoutPath = "/Login/Login";
+    options.AccessDeniedPath ="/Login/AccessDenied";
+    options.SlidingExpiration = true;
+    options.Cookie = new CookieBuilder
+    {
+        HttpOnly = true,
+        Name = ".KYS.Web.Cookie"
+    };
+});
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAracBilgiService, AracBilgiManager>();
-
-// Razor Pages ve Controllers yapýlandýrmasý
+builder.Services.AddScoped<ILoginService, LoginBilgiManager>();
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+}); 
+
+builder.Services.AddAuthentication("CookieAuthentication")
+    .AddCookie("CookieAuthentication", options =>
+    {
+        options.LoginPath = "/Login/Login";
+        options.AccessDeniedPath = "/Login/AccessDenied";
+    });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
 
-// Static Files için yapýlandýrma
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "node_modules")),
-    RequestPath = "/modules"
-});
-
-// Routing
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseSession(); 
+app.UseAuthentication();
 app.UseAuthorization();
-
-// Controller Routes
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-//app.MapControllerRoute(
-//    name: "AracEkle",
-//    pattern: "AracEkle/{firmaId?}",
-//    defaults: new { controller = "AracEkle", action = "AracKayit" });
-
-// Razor Pages Routes
 app.MapRazorPages();
 
 app.Run();

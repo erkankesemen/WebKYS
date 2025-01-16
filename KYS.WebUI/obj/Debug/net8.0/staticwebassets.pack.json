@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\Taslak.css"
     },
     {
+      "Id": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.WebUI\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
       "Id": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.WebUI\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

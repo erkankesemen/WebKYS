@@ -1,4 +1,5 @@
 C:\Users\user\source\repos\KYSWeb\KYS.Entity\bin\Debug\net8.0\KYS.Entity.deps.json
+C:\Users\user\source\repos\KYSWeb\KYS.Entity\bin\Debug\net8.0\KYS.Entity.runtimeconfig.json
 C:\Users\user\source\repos\KYSWeb\KYS.Entity\bin\Debug\net8.0\KYS.Entity.dll
 C:\Users\user\source\repos\KYSWeb\KYS.Entity\bin\Debug\net8.0\KYS.Entity.pdb
 C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\KYS.Entity.csproj.AssemblyReference.cache
@@ -6,9 +7,9 @@ C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\KYS.Entity.Generat
 C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\KYS.Entity.AssemblyInfoInputs.cache
 C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\KYS.Entity.AssemblyInfo.cs
 C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\KYS.Entity.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\KYS.Entity.sourcelink.json
 C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\KYS.Entity.dll
 C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\refint\KYS.Entity.dll
 C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\KYS.Entity.pdb
-C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\ref\KYS.Entity.dll
-C:\Users\user\source\repos\KYSWeb\KYS.Entity\bin\Debug\net8.0\KYS.Entity.runtimeconfig.json
 C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\KYS.Entity.genruntimeconfig.cache
+C:\Users\user\source\repos\KYSWeb\KYS.Entity\obj\Debug\net8.0\ref\KYS.Entity.dll

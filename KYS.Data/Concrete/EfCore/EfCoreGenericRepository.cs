@@ -11,7 +11,7 @@ namespace KYS.Data.Concrete.EfCore
     where TEntity : class
     {
         protected readonly DbContext context;
-         public EfCoreGenericRepository(DbContext ctx)
+        public EfCoreGenericRepository(DbContext ctx)
         {
             context = ctx;
         }

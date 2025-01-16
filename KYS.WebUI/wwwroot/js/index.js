@@ -1,8 +1,14 @@
+
 document.addEventListener("DOMContentLoaded", function () {
+
+
+
+
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const body = document.body;
 
+    // Tema Değişimi
     const savedTheme = localStorage.getItem('theme') || 'light-theme';
     body.className = savedTheme;
     themeIcon.className = savedTheme === 'light-theme' ? 'bi bi-moon-stars' : 'bi bi-sun';
@@ -19,37 +25,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    const sidebar = document.getElementById('sidebar');
     const sidebarCollapse = document.getElementById('sidebarCollapse');
-
     sidebarCollapse?.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
+        document.getElementById('sidebar').classList.toggle('active');
     });
 
-    // Filtreleme fonksiyonlarını global olarak tanımlayın
-    window.toggleFilter = function (columnIndex) {
-        const filterInputs = document.querySelectorAll('thead tr th input');
-        if (filterInputs[columnIndex]) {
-            filterInputs[columnIndex].classList.toggle('d-none');
-            if (!filterInputs[columnIndex].classList.contains('d-none')) {
-                filterInputs[columnIndex].focus();
-            }
-        }
-    };
-
-    window.filterColumn = function (event, columnIndex) {
-        const filterValue = event.target.value.toLowerCase();
-        const table = document.getElementById('dataTable');
-        const rows = table.querySelectorAll('tbody tr');
-
-        rows.forEach(row => {
-            const cell = row.querySelectorAll('td')[columnIndex];
-            if (cell) {
-                const cellText = cell.textContent.toLowerCase();
-                row.style.display = cellText.includes(filterValue) ? '' : 'none';
-            }
-        });
-    };
-
-    console.log("Filtreleme fonksiyonları başarıyla yüklendi.");
+    // Kolon İkonlarına Tıklama Dinleyicisi
+    document.querySelectorAll('.bi-filter').forEach((filterIcon, index) => {
+        filterIcon.addEventListener('click', () => toggleFilter(index));
+    });
 });
