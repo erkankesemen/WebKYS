@@ -1,6 +1,18 @@
 
 document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById('registerModal');
 
+    // Modal açıldığında
+    modal.addEventListener('shown.bs.modal', () => {
+        modal.removeAttribute('aria-hidden');
+        modal.querySelector('input').focus(); // İlk giriş alanına odaklan
+    });
+    
+    // Modal kapatıldığında
+    modal.addEventListener('hidden.bs.modal', () => {
+        modal.setAttribute('aria-hidden', 'true');
+    });
+    
 
 
 

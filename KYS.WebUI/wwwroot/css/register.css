@@ -1,0 +1,80 @@
+:root {
+    --primary: #0070f3;
+    --primary-foreground: #ffffff;
+    --secondary: #f5f5f5;
+    --secondary-foreground: #111;
+    --background: #ffffff;
+    --foreground: #111111;
+    --card: #ffffff;
+    --card-foreground: #111111;
+    --border: #e5e5e5;
+    --input: #ffffff;
+    --ring: #0070f3;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+.modal-content {
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border);
+    background-color: var(--card);
+    border-radius: 15px 15px 0 0;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.form-control {
+    border: 1px solid var(--border);
+    background-color: var(--input);
+}
+
+.form-control:focus {
+    border-color: var(--ring);
+    box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.1);
+}
+
+.input-group-text {
+    background-color: var(--secondary);
+    border: 1px solid var(--border);
+    color: var(--secondary-foreground);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary);
+    opacity: 0.9;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.password-strength .progress-bar {
+    transition: width 0.3s ease-in-out;
+}
+
+@media (max-width: 576px) {
+    .modal-dialog {
+        margin: 1rem;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+}

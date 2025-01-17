@@ -1,0 +1,82 @@
+@model KYS.WebUI.Models.RegisterModel
+
+@* <form asp-controller="Account" asp-action="Register" method="POST">
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label">Ad</label>
+        <input type="text" class="form-control" asp-for="FirstName" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label">Soyad</label>
+        <input type="text" class="form-control" asp-for="LastName" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="UserName" class="form-label">Kullanıcı Adı</label>
+        <input type="text" class="form-control" asp-for="UserName" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">E-Posta</label>
+        <input type="email" class="form-control" asp-for="Email" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Şifre</label>
+        <input type="password" class="form-control" asp-for="Password" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="RePassword" class="form-label">Şifre Tekrar</label>
+        <input type="password" class="form-control" asp-for="RePassword" required />
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Kayıt Ol</button>
+</form>
+ *@
+
+ <form asp-controller="Account" asp-action="Register" method="POST id="registrationForm">
+                        <div class="mb-3">
+                            <label asp-for="FirstName" class="form-label">Full Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control" placeholder="Enter your name" asp-for="FirstName" required>
+                            </div>
+                     
+                        <div class="mb-3">
+                            <label asp-for="LastName"  class="form-label">Last Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control"  placeholder="Enter your name" asp-for="LastName" required>
+                        </div>
+                         <div class="mb-3">
+                            <label asp-for="UserName"  class="form-label">User Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control"  placeholder="Enter your name" asp-for="UserName" required>
+                        </div>
+                      
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                <input type="email" class="form-control" placeholder="Enter your email" asp-for="Email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                <input type="password" class="form-control" placeholder="Enter your password" asp-for="Password" required>
+                            </div>
+                            <div class="password-strength mt-2 progress" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="RePassword"  class="form-label">Confirm Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                <input type="password" class="form-control" placeholder="Confirm your password" asp-for="RePassword"  required>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="terms" required>
+                            <label class="form-check-label" for="terms">I agree to the terms and conditions</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                    </form>

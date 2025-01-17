@@ -7,112 +7,122 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using KYS.WebUI.Identity;
 using KYS.WebUI.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using KYS.Business.Abstract;
 
 namespace KYS.WebUI.Controllers
 {
 
 
-    [AllowAnonymous]
-    public class LoginController : Controller
+   [AutoValidateAntiforgeryToken]
+    public class LoginController :Controller
     {
-        private readonly NetContext _context;
         private UserManager<User> _userManager;
-        private SignInManager<User> _signManager;
-        public LoginController(UserManager<User> userManager, SignInManager<User> signManager, NetContext context)
+        private SignInManager<User> _signInManager;
+        public LoginController(UserManager<User> userManager,SignInManager<User> signInManager)
         {
-            _userManager = userManager;
-            _signManager = signManager;
-            _context = context;
+            _userManager=userManager;
+            _signInManager=signInManager;
+        }
+        public IActionResult Login(string ReturnUrl=null)
+        {
+            return View(new LoginModel()
+            {
+                ReturnUrl = ReturnUrl
+            });
         }
 
-        public IActionResult Login()
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            if(!ModelState.IsValid)
+            {   
+                return View(model);
+            }
+
+            // var user = await _userManager.FindByNameAsync(model.UserName);
+            var user = await _userManager.FindByEmailAsync(model.Email);
+
+            if(user==null)
+            {
+                ModelState.AddModelError("","Bu kullanıcı adı ile daha önce hesap oluşturulmamış");
+                return View(model);
+            } 
+
+            if(!await _userManager.IsEmailConfirmedAsync(user))
+            {
+                ModelState.AddModelError("","Lütfen email hesabınıza gelen link ile üyeliğinizi onaylayınız.");
+                return View(model);
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(user,model.Password,true,false);
+
+            if(result.Succeeded) 
+            {
+                return Redirect(model.ReturnUrl??"~/");
+            }
+
+            ModelState.AddModelError("","Girilen kullanıcı adı veya parola yanlış");
+            return View(model);
+        }
+        public IActionResult Register()
         {
             return View();
         }
 
-
-
-
-        /*  [HttpPost]
-         public async Task<IActionResult> Login(int firmaKodu, string username, string password, bool remember = false, string returnUrl = null)
-         {
-             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-             {
-                 ModelState.AddModelError("", "Kullanıcı adı ve şifre boş olamaz");
-                 return View(); // Hata mesajı göster ve aynı sayfaya geri dön
-             }
-
-             var user = _context.Personeller.FirstOrDefault(p =>
-                 p.FirmaKodu == firmaKodu &&
-                 p.KullaniciAdi == username &&
-                 p.Sifre == password);
-
-             if (user == null)
-             {
-                 ModelState.AddModelError("", "Bu kullanıcı veri tabanında bulunamadı");
-                 return View(); // Kullanıcı bulunamazsa, hata mesajı göster ve formu geri gönder
-             }
-
-             var signInResult = await _signManager.PasswordSignInAsync(username, password, remember, false);
-
-             if (signInResult.Succeeded)
-             {
-                 Console.WriteLine($"Giriş başarılı: {username}");
-
-                 // ReturnUrl varsa, o sayfaya yönlendir
-                 if (Url.IsLocalUrl(returnUrl))
-                 {
-                     return Redirect(returnUrl); // ReturnUrl geçerli bir URL ise o sayfaya yönlendir
-                 }
-
-                 // ReturnUrl yoksa, ana sayfaya yönlendir
-                 return RedirectToAction("Index", "Home");
-             }
-             else
-             {
-                 ModelState.AddModelError("", "Geçersiz giriş.");
-                 return View(); // Giriş başarısızsa hata göster
-             }
-         }
-  */
- [HttpPost]
-    public async Task<IActionResult> Login(int firmaKodu ,string username, string password, string returnUrl = null)
-    {
-        // Kullanıcıyı veritabanında kontrol et
-        var user = _context.Personeller.FirstOrDefault(u => u.FirmaKodu == firmaKodu &&  u.KullaniciAdi == username && u.Sifre == password);
-        
-        if (user != null)
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterModel model)
         {
-            // Kullanıcı doğrulandı, ClaimsIdentity oluştur
-            var claims = new List<Claim>
+            if (!ModelState.IsValid)
             {
-                new Claim(ClaimTypes.Name, username),
-                // Diğer claim'ler eklenebilir
+                return View(model);
+            }
+
+            // Kullanıcı oluşturma
+            var user = new User
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                UserName = model.UserName,
+                Email = model.Email
             };
-            
-            var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
-            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
-            // Çerez ile giriş yap
-            await HttpContext.SignInAsync("Cookies", claimsPrincipal);
+            try
+            {
+                // Kullanıcı oluşturma işlemi
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    // Email doğrulama için token oluştur
+                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var confirmationLink = Url.Action("ConfirmEmail", "Account", new
+                    {
+                        userId = user.Id,
+                        token = token
+                    }, Request.Scheme);
 
-            // ReturnUrl varsa o sayfaya yönlendir, yoksa ana sayfaya yönlendir
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
+                    // Log veya e-posta işlemleri buraya eklenebilir
+                    Console.WriteLine($"Email doğrulama bağlantısı: {confirmationLink}");
+
+                    return RedirectToAction("Login", "Login");
+                }
+
+                // Kullanıcı oluşturulamadıysa hataları kullanıcıya göster
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return RedirectToAction("Index", "Home");
+                // Beklenmedik hata durumları için loglama
+                Console.WriteLine($"Hata: {ex.Message}");
+                Console.WriteLine($"Detay: {ex.StackTrace}");
+                ModelState.AddModelError("", "Bir hata oluştu, lütfen daha sonra tekrar deneyiniz.");
             }
+
+            return View(model);
         }
-        
-        // Geçersiz giriş
-        ViewBag.ErrorMessage = "Geçersiz kullanıcı adı veya şifre";
-        return View();
-    }
-
-
 
     }
 }

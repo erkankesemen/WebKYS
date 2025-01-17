@@ -7,6 +7,7 @@ namespace KYS.Data.Abstract
 {
     public interface IUnitOfWork: IDisposable
     {
+        ICartRepository Carts {get;}
         IAracBilgiRepository AracBilgi {get;}
         ILoginRepository Personel {get;}
         void Save();

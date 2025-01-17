@@ -8,11 +8,11 @@ namespace KYS.Entity
     public class Departman
     {
         public int DepartmanID { get; set; }
-        public string DepartmanAdi { get; set; }
-        public string Aciklama { get; set; }
-        public int FirmaId { get; set; }
+        public string? DepartmanAdi { get; set; }
+        public string? Aciklama { get; set; }
+        public int? FirmaId { get; set; }
         public Nullable<int> YoneticiId { get; set; }
-        public bool DepartmanDurumu { get; set; }
+        public bool? DepartmanDurumu { get; set; }
 
         public virtual Firma Firma { get; set; }
 

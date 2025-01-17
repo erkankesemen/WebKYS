@@ -9,8 +9,16 @@
       "PackagePath": "staticwebassets\\css\\Taslak.css"
     },
     {
+      "Id": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.WebUI\\wwwroot\\css\\bootstrap-icons.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-icons.css"
+    },
+    {
       "Id": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.WebUI\\wwwroot\\css\\login.css",
       "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.WebUI\\wwwroot\\css\\register.css",
+      "PackagePath": "staticwebassets\\css\\register.css"
     },
     {
       "Id": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.WebUI\\wwwroot\\css\\site.css",
@@ -23,6 +31,10 @@
     {
       "Id": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.WebUI\\wwwroot\\js\\index.js",
       "PackagePath": "staticwebassets\\js\\index.js"
+    },
+    {
+      "Id": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.WebUI\\wwwroot\\js\\register.js",
+      "PackagePath": "staticwebassets\\js\\register.js"
     },
     {
       "Id": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.WebUI\\wwwroot\\js\\site.js",

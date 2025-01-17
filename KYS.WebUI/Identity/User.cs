@@ -8,10 +8,8 @@ namespace KYS.WebUI.Identity
 {
     public class User : IdentityUser
     {
-        public string FirmaKodu { get; set; }
-        public string KullaniciAdi { get; set; }
-        public string Sifre { get; set; }
-
-        
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int FirmaKodu { get; set; }
     }
 }

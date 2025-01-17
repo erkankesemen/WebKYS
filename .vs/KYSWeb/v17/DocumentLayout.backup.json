@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\KYSWeb\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{987AE9F6-60B8-4B86-AAFB-A98CE531542C}|KYS.Entity\\KYS.Entity.csproj|c:\\users\\user\\source\\repos\\kysweb\\kys.entity\\firma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{987AE9F6-60B8-4B86-AAFB-A98CE531542C}|KYS.Entity\\KYS.Entity.csproj|solutionrelative:kys.entity\\firma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D7D6901-3B15-4060-A3F6-08663ECFF508}|KYS.Data\\KYS.Data.csproj|c:\\users\\user\\source\\repos\\kysweb\\kys.data\\concrete\\efcore\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D7D6901-3B15-4060-A3F6-08663ECFF508}|KYS.Data\\KYS.Data.csproj|solutionrelative:kys.data\\concrete\\efcore\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D7D6901-3B15-4060-A3F6-08663ECFF508}|KYS.Data\\KYS.Data.csproj|c:\\users\\user\\source\\repos\\kysweb\\kys.data\\abstract\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D7D6901-3B15-4060-A3F6-08663ECFF508}|KYS.Data\\KYS.Data.csproj|solutionrelative:kys.data\\abstract\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{026B35B5-D8EC-4031-8628-F26289CFCD40}|KYS.WebUI\\KYS.WebUI.csproj|c:\\users\\user\\source\\repos\\kysweb\\kys.webui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{026B35B5-D8EC-4031-8628-F26289CFCD40}|KYS.WebUI\\KYS.WebUI.csproj|solutionrelative:kys.webui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -23,15 +35,52 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Firma.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.Entity\\Firma.cs",
+              "RelativeDocumentMoniker": "KYS.Entity\\Firma.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.Entity\\Firma.cs*",
+              "RelativeToolTip": "KYS.Entity\\Firma.cs*",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAmwBkAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T14:27:57.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.Data\\Concrete\\EfCore\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "KYS.Data\\Concrete\\EfCore\\UnitOfWork.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.Data\\Concrete\\EfCore\\UnitOfWork.cs",
+              "RelativeToolTip": "KYS.Data\\Concrete\\EfCore\\UnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T07:13:25.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.Data\\Abstract\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "KYS.Data\\Abstract\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.Data\\Abstract\\IUnitOfWork.cs",
+              "RelativeToolTip": "KYS.Data\\Abstract\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T07:13:21.355Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.WebUI\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "KYS.WebUI\\Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\user\\source\\repos\\KYSWeb\\KYS.WebUI\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "KYS.WebUI\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-15T12:16:15.786Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T12:16:15.786Z"
             }
           ]
         }

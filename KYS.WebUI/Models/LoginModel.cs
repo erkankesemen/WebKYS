@@ -9,11 +9,13 @@ namespace KYS.WebUI.Models
     public class LoginModel
     {
         [Required]
-        public int FirmaKodu { get; set; }
-        [Required]
-        public string KullaniciAdi { get; set; }
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        public string Sifre { get; set; }
+        public string Password { get; set; }
+        public string ReturnUrl { get; set; }
+        [Required]
+        public int FirmaKodu { get; set; }
     }
 }

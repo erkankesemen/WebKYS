@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KYS.WebUI.Controllers
 {
+      [Authorize]
     public class HomeController : Controller
     {
         private readonly IAracBilgiService _aracBilgiService;

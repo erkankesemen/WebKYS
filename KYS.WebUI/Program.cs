@@ -16,7 +16,9 @@ builder.Services.AddDbContext<NetContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("NetContext"));
 });
 
-builder.Services.AddDbContext<ApplicationContext>(options=>options.UseSqlServer("ApplicationContext"));
+builder.Services.AddDbContext<ApplicationContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationContext")));
+
 builder.Services.AddIdentity<User,IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
 builder.Services.Configure<IdentityOptions>(options=> {
     options.Password.RequireDigit = true; // mutlaka sayısal değer girecek
@@ -31,8 +33,8 @@ builder.Services.Configure<IdentityOptions>(options=> {
     
 });
 builder.Services.ConfigureApplicationCookie(options => {
-    options.LoginPath = "/Login/Login";
-    options.LogoutPath = "/Login/Login";
+    options.LoginPath = "/Account/Login";
+    options.LogoutPath = "/Account/Login";
     options.AccessDeniedPath ="/Login/AccessDenied";
     options.SlidingExpiration = true;
     options.Cookie = new CookieBuilder
@@ -44,6 +46,7 @@ builder.Services.ConfigureApplicationCookie(options => {
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAracBilgiService, AracBilgiManager>();
+builder.Services.AddScoped<ICartService, CartManager>();
 builder.Services.AddScoped<ILoginService, LoginBilgiManager>();
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();

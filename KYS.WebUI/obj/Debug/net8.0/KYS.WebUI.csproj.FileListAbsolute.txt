@@ -1,5 +1,7 @@
 C:\Users\user\source\repos\KYSWeb\KYS.WebUI\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\user\source\repos\KYSWeb\KYS.WebUI\bin\Debug\net8.0\appsettings.json
+C:\Users\user\source\repos\KYSWeb\KYS.WebUI\bin\Debug\net8.0\package-lock.json
+C:\Users\user\source\repos\KYSWeb\KYS.WebUI\bin\Debug\net8.0\package.json
 C:\Users\user\source\repos\KYSWeb\KYS.WebUI\bin\Debug\net8.0\KYS.WebUI.staticwebassets.runtime.json
 C:\Users\user\source\repos\KYSWeb\KYS.WebUI\bin\Debug\net8.0\KYS.WebUI.staticwebassets.endpoints.json
 C:\Users\user\source\repos\KYSWeb\KYS.WebUI\bin\Debug\net8.0\KYS.WebUI.exe
@@ -177,3 +179,4 @@ C:\Users\user\source\repos\KYSWeb\KYS.WebUI\obj\Debug\net8.0\refint\KYS.WebUI.dl
 C:\Users\user\source\repos\KYSWeb\KYS.WebUI\obj\Debug\net8.0\KYS.WebUI.pdb
 C:\Users\user\source\repos\KYSWeb\KYS.WebUI\obj\Debug\net8.0\KYS.WebUI.genruntimeconfig.cache
 C:\Users\user\source\repos\KYSWeb\KYS.WebUI\obj\Debug\net8.0\ref\KYS.WebUI.dll
+C:\Users\user\source\repos\KYSWeb\KYS.WebUI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
