@@ -94,9 +94,6 @@ namespace KYS.Data.Migrations
                     b.Property<string>("OdemeSekli")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonelID")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("ProjeTarihi")
                         .HasColumnType("datetime2");
 
@@ -141,9 +138,9 @@ namespace KYS.Data.Migrations
 
                     b.HasIndex("FirmaId");
 
-                    b.HasIndex("MusteriId");
+                    b.HasIndex("KayitAcanId");
 
-                    b.HasIndex("PersonelID");
+                    b.HasIndex("MusteriId");
 
                     b.ToTable("AracBilgileri");
                 });
@@ -941,16 +938,15 @@ namespace KYS.Data.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
+                    b.HasOne("KYS.Entity.Personel", "Personel")
+                        .WithMany("AracBilgileri")
+                        .HasForeignKey("KayitAcanId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
                     b.HasOne("KYS.Entity.Musteri", "Musteri")
                         .WithMany("Araclar")
                         .HasForeignKey("MusteriId")
                         .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("KYS.Entity.Personel", "Personel")
-                        .WithMany("AracBilgileri")
-                        .HasForeignKey("PersonelID")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Firma");

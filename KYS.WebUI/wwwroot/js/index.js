@@ -1,19 +1,5 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById('registerModal');
-
-    // Modal açıldığında
-    modal.addEventListener('shown.bs.modal', () => {
-        modal.removeAttribute('aria-hidden');
-        modal.querySelector('input').focus(); // İlk giriş alanına odaklan
-    });
-    
-    // Modal kapatıldığında
-    modal.addEventListener('hidden.bs.modal', () => {
-        modal.setAttribute('aria-hidden', 'true');
-    });
-    
-
+ 
 
 
     const themeToggle = document.getElementById('themeToggle');
@@ -38,8 +24,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     const sidebarCollapse = document.getElementById('sidebarCollapse');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.querySelector('.content');
+    let overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    document.body.appendChild(overlay);
+
     sidebarCollapse?.addEventListener('click', () => {
-        document.getElementById('sidebar').classList.toggle('active');
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+        content.classList.toggle('pushed');
+    });
+
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        content.classList.remove('pushed');
+    });
+
+    // Ekran boyutu değiştiğinde
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 780) {
+            overlay.classList.remove('active');
+            content.classList.remove('pushed');
+        }
     });
 
     // Kolon İkonlarına Tıklama Dinleyicisi

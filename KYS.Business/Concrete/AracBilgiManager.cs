@@ -18,7 +18,22 @@ namespace KYS.Business.Concrete
         }
         public void Add(AracBilgi entity)
         {
-            throw new NotImplementedException();
+            if (entity.MusteriId <= 0)
+            {
+                throw new ArgumentException("Müşteri seçimi yapılmadı!");
+            }
+
+            var musteri = _unitofwork.Musteri.GetById(entity.MusteriId);
+            if (musteri == null)
+            {
+                throw new ArgumentException("Seçilen müşteri bulunamadı!");
+            }
+
+            entity.MusteriId = musteri.MusteriId;
+            entity.KayitTarihi = DateTime.Now;
+            
+            _unitofwork.AracBilgi.Create(entity);
+            _unitofwork.Save();
         }
 
         public void Delete(AracBilgi entity)

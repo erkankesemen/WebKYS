@@ -48,6 +48,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAracBilgiService, AracBilgiManager>();
 builder.Services.AddScoped<ICartService, CartManager>();
 builder.Services.AddScoped<ILoginService, LoginBilgiManager>();
+builder.Services.AddScoped<IMusteriService, MusteriManager>();
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDistributedMemoryCache();
@@ -81,8 +82,25 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
+    app.MapControllerRoute(
+    name: "aracbilgi",
+    pattern: "UretimListesi",
+    defaults: new {controller="AracBilgi",action="Index"}
+    );
+
+    app.MapControllerRoute(
+    name: "aracbilgi",
+    pattern: "UretimListesi/{Id?}",
+    defaults: new {controller="AracBilgi",action="Index"}
+    );
+
+   app.MapControllerRoute(
+    name: "Dashboard",
+    pattern: "Dashboard",
+    defaults: new {controller="Dashboard",action="Index"}
+    );
+    
 app.MapRazorPages();
-
 app.Run();

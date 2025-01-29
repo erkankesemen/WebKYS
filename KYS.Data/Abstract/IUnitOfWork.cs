@@ -9,6 +9,7 @@ namespace KYS.Data.Abstract
     {
         ICartRepository Carts {get;}
         IAracBilgiRepository AracBilgi {get;}
+        IMusteriRepository Musteri {get;}
         ILoginRepository Personel {get;}
         void Save();
         Task<int> SaveAsync();

@@ -173,7 +173,12 @@ namespace KYS.Data.Concrete
 
 
 
-            
+            modelBuilder.Entity<AracBilgi>()
+                .HasOne(c=>c.Personel)
+                .WithMany(c=>c.AracBilgileri)
+                .HasForeignKey(c=>c.KayitAcanId)
+                .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<AracBilgi>()
                 .HasOne(c => c.Firma)
                 .WithMany(c => c.AracBilgileri)

@@ -17,10 +17,6 @@ namespace KYS.Entity
 
 
         public virtual ICollection<AracBilgi> Araclar { get; set; }
-
-
-
-
         public virtual Firma Firma { get; set; }
     }
 }

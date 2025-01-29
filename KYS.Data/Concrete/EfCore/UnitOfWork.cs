@@ -13,7 +13,7 @@ namespace KYS.Data.Concrete.EfCore
         private readonly NetContext _context;
         private EfCoreAracBilgiRepository _aracbilgiRepository;
         private EfCoreCartRepository _cartRepository;
-
+        private EfCoreMusteriRepository _musteriRepository;
         private EfCoreLoginRepository _loginRepository;
         public UnitOfWork(NetContext context)
         {
@@ -29,6 +29,9 @@ namespace KYS.Data.Concrete.EfCore
 
         public ICartRepository Carts => 
             _cartRepository = _cartRepository ?? new EfCoreCartRepository(_context);
+
+        public IMusteriRepository Musteri => 
+            _musteriRepository =_musteriRepository ?? new EfCoreMusteriRepository(_context);   
 
         public void Dispose()
         {

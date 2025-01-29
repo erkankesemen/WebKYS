@@ -48,7 +48,7 @@ namespace KYS.Data.Concrete.EfCore
 
         List<TEntity> IRepository<TEntity>.GetAll()
         {
-            throw new NotImplementedException();
+            return context.Set<TEntity>().ToList(); 
         }
 
         TEntity IRepository<TEntity>.GetById(int Id)

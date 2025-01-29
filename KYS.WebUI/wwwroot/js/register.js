@@ -1,15 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById('registerModal');
+    const registerModal = document.getElementById('registerModal');
+    const modalInstance = new bootstrap.Modal(registerModal);
 
-    // Modal açıldığında
-    modal.addEventListener('shown.bs.modal', () => {
-        modal.removeAttribute('inert'); // Modal içeriğini etkinleştir
-        modal.querySelector('input')?.focus(); // İlk odaklanabilir öğeye odaklan
-    });
-    
-    // Modal kapatıldığında
-    modal.addEventListener('hidden.bs.modal', () => {
-        modal.setAttribute('inert', ''); // Modal içeriğini devre dışı bırak
-    });
-    
+    if (registerModal) {
+        // Modal açıldığında
+        registerModal.addEventListener('shown.bs.modal', () => {
+            registerModal.removeAttribute('aria-hidden'); // Modal açık olduğunda erişilebilir olmalı
+        });
+
+        // Modal kapatıldığında
+        registerModal.addEventListener('hidden.bs.modal', () => {
+            registerModal.setAttribute('aria-hidden', 'true'); // Modal kapalı olduğunda gizlenmeli
+        });
+    }
 });

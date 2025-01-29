@@ -1,0 +1,443 @@
+@model KYS.Entity.ViewModels.AracBilgiViewModel
+
+<link rel="stylesheet" href="/AracBilgi/AracBilgi.css">
+
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1>Üretim Listesi</h1>
+        <div class="d-flex align-items-center">
+            <input type="text" id="globalSearch" class="form-control me-2" placeholder="Tüm Tabloyu Ara..."
+                style="width: 300px;">
+            <button class="btn btn-secondary me-2" onclick="filterTable()">Ara</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDataModal">
+                <i class="bi bi-plus-circle me-2"></i>Yeni Veri Ekle
+            </button>
+        </div>
+    </div>
+
+    <div class="card mb-4" id="mainTableCard">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover" id="dataTable">
+                    <thead>
+                        <tr style="font-size: 0.9rem;">
+                            <th>
+                                S.No
+                                <i class="bi bi-filter" style="cursor: pointer;"></i>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control form-control-sm mt-2 d-none" placeholder="Filtrele..." onkeyup="filterColumn(event, 0)">
+                                    <i class="bi bi-x-circle-fill position-absolute" style="display:none; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #dc3545;" onclick="clearFilter(0)"></i>
+                                </div>
+                            </th>
+                            <th>
+                                İş Emri No
+                                <i class="bi bi-filter" style="cursor: pointer;"></i>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control form-control-sm mt-2 d-none" placeholder="Filtrele..." onkeyup="filterColumn(event, 1)">
+                                    <i class="bi bi-x-circle-fill position-absolute" style="display:none; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #dc3545;" onclick="clearFilter(1)"></i>
+                                </div>
+                            </th>
+                            <th>
+                                Şase Numarası
+                                <i class="bi bi-filter" style="cursor: pointer;"></i>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control form-control-sm mt-2 d-none" placeholder="Filtrele..." onkeyup="filterColumn(event, 2)">
+                                    <i class="bi bi-x-circle-fill position-absolute" style="display:none; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #dc3545;" onclick="clearFilter(2)"></i>
+                                </div>
+                            </th>
+                            <th>
+                                Atölye Giriş Tarihi
+                                <i class="bi bi-filter" style="cursor: pointer;"></i>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control form-control-sm mt-2 d-none" placeholder="Filtrele..." onkeyup="filterColumn(event, 3)">
+                                    <i class="bi bi-x-circle-fill position-absolute" style="display:none; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #dc3545;" onclick="clearFilter(3)"></i>
+                                </div>
+                            </th>
+                            <th>
+                                Araç Markası
+                                <i class="bi bi-filter" style="cursor: pointer;"></i>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control form-control-sm mt-2 d-none" placeholder="Filtrele..." onkeyup="filterColumn(event, 4)">
+                                    <i class="bi bi-x-circle-fill position-absolute" style="display:none; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #dc3545;" onclick="clearFilter(4)"></i>
+                                </div>
+                            </th>
+                            <th>
+                                Versiyon
+                                <i class="bi bi-filter" style="cursor: pointer;"></i>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control form-control-sm mt-2 d-none" placeholder="Filtrele..." onkeyup="filterColumn(event, 5)">
+                                    <i class="bi bi-x-circle-fill position-absolute" style="display:none; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #dc3545;" onclick="clearFilter(5)"></i>
+                                </div>
+                            </th>
+                            <th>
+                                Varyant
+                                <i class="bi bi-filter" style="cursor: pointer;"></i>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control form-control-sm mt-2 d-none" placeholder="Filtrele..." onkeyup="filterColumn(event, 6)">
+                                    <i class="bi bi-x-circle-fill position-absolute" style="display:none; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #dc3545;" onclick="clearFilter(6)"></i>
+                                </div>
+                            </th>
+                            <th>
+                                Modeli
+                                <i class="bi bi-filter" style="cursor: pointer;"></i>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control form-control-sm mt-2 d-none" placeholder="Filtrele..." onkeyup="filterColumn(event, 7)">
+                                    <i class="bi bi-x-circle-fill position-absolute" style="display:none; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #dc3545;" onclick="clearFilter(7)"></i>
+                                </div>
+                            </th>
+                            <th>
+                                Durumu
+                                <i class="bi bi-filter" style="cursor: pointer;"></i>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control form-control-sm mt-2 d-none" placeholder="Filtrele..." onkeyup="filterColumn(event, 8)">
+                                    <i class="bi bi-x-circle-fill position-absolute" style="display:none; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #dc3545;" onclick="clearFilter(8)"></i>
+                                </div>
+                            </th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.AracBilgileri.Any())
+                        {
+                            var counter = 1;
+                            @foreach (var item in Model.AracBilgileri)
+                            {
+                                <tr style="font-size: 0.9rem;" data-id="@item.Id">
+                                    <td>@counter</td>
+                                    <td>@item.IsEmriNo</td>
+                                    <td>@item.SaseNumarasi</td>
+                                    <td>@item.AtolyeGirisTarihi?.ToString("dd.MM.yyyy")</td>
+                                    <td>@item.AracMarkasi</td>
+                                    <td>@item.Versiyon</td>
+                                    <td>@item.Varyant</td>
+                                    <td>@item.ModelYili</td>
+                                    <td>@(item.SiparisDurumu == true ? "Tamamlandı" : "Bekliyor")</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary px-1 py-0"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm btn-danger px-1 py-0"><i class="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                  counter++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="10">Veri bulunamadı.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addDataModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-white"  style="background: linear-gradient(135deg, #2C3E50, #3498DB);">
+                <h5 class="modal-title">
+                    <i class="bi bi-car-front me-2"></i>Veri Kayıt İşlemleri
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="AracBilgi" asp-action="Create" method="POST" id="aracKayitForm">
+                    <!-- Müşteri İletişim Bilgileri -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+
+                            <h6 class="mb-0">Müşteri İletişim Bilgileri</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Müşteri Adı</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="musteriAdi" readonly>
+                                        <input type="hidden" id="musteriId">
+                                        <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#musteriModal">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Görüşülen Kişi</label>
+                                    <input type="text" class="form-control" id="gorulenKisi" name="gorulenKisi">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">İş Emri No</label>
+
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Müşteri Adresi</label>
+                                    <textarea class="form-control" style="height: 120px; resize: none;" placeholder="Adresinizi girin"></textarea>
+                                </div>
+                               <div class="col-md-6">
+                                <div class="row g-2">
+                                    <div class="col-12">
+                                        <label class="form-label">Firma Telefonu</label>
+                                        <input type="tel" id="firmaTelefonu" class="form-control" maxlength="14" placeholder="0(___) ___ __ __">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Cep Telefonu</label>
+                                        <input type="tel" id="cepTelefonu" class="form-control" maxlength="14" placeholder="0(___) ___ __ __">
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Araç Bilgileri -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">Araç Bilgileri</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Şase Numarası</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control">
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Atölye Giriş Tarihi</label>
+                                    <input type="date" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Versiyon</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control">
+                                        <button class="btn btn-outline-success" type="button"><i class="bi bi-plus"></i></button>
+                                        <button class="btn btn-outline-danger" type="button"><i class="bi bi-x"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Varyant</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control">
+                                        <button class="btn btn-outline-success" type="button"><i class="bi bi-plus"></i></button>
+                                        <button class="btn btn-outline-danger" type="button"><i class="bi bi-x"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Model Yılı</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Yapılacak Tadilat</label>
+                                    <div class="input-group">
+                                         <textarea class="form-control" style="height: 120px; resize: none;" placeholder="Yapılacak Tadilatı Girin"></textarea>
+                              
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Araç Döşeme Bilgileri -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">Araç Döşeme Bilgileri</h6>
+                        </div>
+                        <div class="card-body">
+                            <textarea class="form-control" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Sipariş Bilgileri -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">Sipariş Bilgileri</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="teklif">
+                                        <label class="form-check-label" for="teklif">Teklif İsteniyor</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="kesinSiparis">
+                                        <label class="form-check-label" for="kesinSiparis">Kesin Sipariş</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Teklif Tarihi</label>
+                                    <input type="date" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Sipariş Tarihi</label>
+                                    <input type="date" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ödeme Bilgileri -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">Ödeme Bilgileri</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Fiyat</label>
+                                    <input type="number" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Teslim Yeri</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Teslim Tarihi</label>
+                                    <input type="date" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Ödeme Şekli</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle me-2"></i>Kapat
+                </button>
+                <button type="button" class="btn btn-primary">
+                    <i class="bi bi-save me-2"></i>Kaydet
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Müşteri Seçim/Ekleme Modalı -->
+<div class="modal fade" id="musteriModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-white" style="background: linear-gradient(135deg, #2C3E50, #3498DB);">
+                <h5 class="modal-title">
+                    <i class="bi bi-people me-2"></i>Müşteri İşlemleri
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Müşteri Arama ve Yeni Ekle Butonu -->
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="input-group" style="width: 300px;">
+                        <input type="text" class="form-control" placeholder="Müşteri Ara...">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#yeniMusteriForm">
+                        <i class="bi bi-plus-circle me-2"></i>Yeni Müşteri
+                    </button>
+                </div>
+
+                <!-- Yeni Müşteri Formu (Collapse) -->
+               
+            <div class="collapse mb-3" id="yeniMusteriForm">
+                    <div class="card card-body">
+                        <h6 class="card-title mb-3">Yeni Müşteri Bilgileri</h6>
+                        
+                        <form id="musteriKayitForm" asp-controller="Musteri" asp-action="CreateMusteri" method="POST">
+                            <div class="row g-3">
+                                <div class="col-md-6"  asp-validation-summary="All">
+                                    <label asp-for="Musteri.MusteriAdi" class="form-label">Müşteri Adı</label>
+                                    <input type="text" class="form-control"  asp-for="Musteri.MusteriAdi" name="MusteriAdi" required>
+                                </div>                              
+                                <div class="col-md-12">
+                                    <label asp-for="Musteri.MusteriAdresi" class="form-label">Adres</label>
+                                    <textarea class="form-control"  asp-for="Musteri.MusteriAdresi" name="MusteriAdresi" rows="2"></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="Musteri.Tel" class="form-label">Firma Telefonu</label>
+                                    <input type="tel" class="form-control telefon-mask" asp-for="Musteri.Tel" name="Tel">
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="Musteri.CepTel" class="form-label">Cep Telefonu</label>
+                                    <input type="tel" class="form-control telefon-mask" asp-for="Musteri.CepTel" name="CepTel">
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-save me-2"></i>Kaydet
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#yeniMusteriForm">
+                                        <i class="bi bi-x-circle me-2"></i>İptal
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- Müşteri Listesi Tablosu -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Müşteri Adı</th>
+                                <th>Adresi</th>
+                                <th>Telefon</th>
+                                <th>Cep Telefonu</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Musteriler.Any())
+                            {
+                                var counter = 1;
+                                @foreach (var musteri in Model.Musteriler)
+                                {
+                                    <tr style="font-size: 0.9rem;" data-id="@musteri.MusteriId">
+                                        <td style="display: none;">@musteri.MusteriAdi</td>
+                                        <td>@counter</td>
+                                        <td>@musteri.MusteriAdi</td>
+                                        <td>@musteri.MusteriAdresi</td>
+                                        <td>@musteri.Tel</td>
+                                        <td>@musteri.CepTel</td>
+                                        <td>
+                                             <button class="btn btn-sm btn-primary sec-btn" 
+                                                    data-id="@musteri.MusteriId">                                                
+                                                <i class="bi bi-check-circle"></i> Seç
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    counter++;
+                                }
+                            }
+                             else
+                        {
+                            <tr>
+                                <td colspan="10">Veri bulunamadı.</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/inputmask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+<script src="/AracBilgi/AracBilgi.js"></script>
+
+  
+
+
